@@ -1,0 +1,17 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+}
+
+p {
+  font-size: 1rem;
+}

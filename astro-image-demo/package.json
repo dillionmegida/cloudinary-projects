@@ -1,0 +1,18 @@
+{
+  "name": "astro-image",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@nanostores/react": "^0.7.1",
+    "astro": "^4.2.4",
+    "cloudinary": "^1.41.3",
+    "nanostores": "^0.9.5"
+  }
+}

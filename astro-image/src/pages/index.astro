@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CldImage from "../components/CldImage.astro";
+import { people, products } from "../demo";
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+    <div class="products container">
+      {
+        products.map((product) => (
+          <CldImage
+            height={500}
+            width={400}
+            alt={product.alt}
+            public_id={product.public_id}
+          />
+        ))
+      }
+		{
+			people.map((product) => (
+				<CldImage
+					height={500}
+					width={400}
+					alt={product.alt}
+					public_id={product.public_id}
+				/>
+			))
+		}
+    </div>
+	</main>
+</Layout>
+
+<style>
+
+  .products {
+    display: grid;
+    gap: 40px;
+    /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+</style>

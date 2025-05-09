@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+
+const DOMAIN =
+	"https://res.cloudinary.com/dillionmegida/image/upload";
+
+interface Props {
+	src: string;
+	alt: string;
+	height: number;
+	width: number;
+}
+
+const { src, alt, height, width } = Astro.props;
+
+const parameters = [
+  ...watermark("SOLD"),
+]
+
+function watermark(text: string) {
+  return [`l_text:Poppins_200:${text}`, "fl_layer_apply"]
+}
+
+const parametersStr = parameters.join('/')
+
+const fullSrc = `${DOMAIN}/${parametersStr}/${src}`
+
+---
+<div>
+	<Image format="png" alt={alt} src={fullSrc} width={width} height={height}   />
+</div>
+
+<style>
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+</style>
