@@ -40,6 +40,33 @@ p {
  
 }
 
+.images-column .custom-image {
+  position: relative;
+}
+
+.images-column .custom-image.loading-indicator::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  animation: spin 500ms linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .image-label {
 	width: 100%;
 	background-color: black;

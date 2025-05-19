@@ -9,7 +9,6 @@
 
       customImages.forEach(image => {
         image.addEventListener('load', () => {
-          console.log(image.parentElement)
           image.parentElement?.classList.remove('loading-indicator')
         });
       });
