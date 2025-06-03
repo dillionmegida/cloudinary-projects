@@ -1,56 +1,68 @@
 <script>
 	import "../lib/styles.css";
-  import { generativeFill } from '@cloudinary/url-gen/qualifiers/background';
-  import { Cloudinary } from '@cloudinary/url-gen';
-  import { pad } from "@cloudinary/url-gen/actions/resize";
   import { CldImage } from "svelte-cloudinary";
 
-  // const cld = new Cloudinary({
-  //   cloud: { cloudName: 'dillionmegida' }
-  // });
+  import { onMount } from 'svelte';
+onMount(() => {
+    function cleanup() {
+      const images = document.querySelectorAll('img');
 
-// Example of how to use generative fill with a CldImage component
+      images.forEach(image => {
+        image.addEventListener('load', () => {
+          image.parentElement?.classList.remove('loading-indicator')
+        });
+      });
+    }
+
+    cleanup()
+
+    return () => {
+      cleanup();
+    };
+  });
 
 
   const demoImage = {
-    "forest-man": {
-      src: 'demo/forest-man.jpg',
-      alt: 'A man standing in a forest',
+    "man_standing_with_a_backpack": {
+      src: 'demo/man_standing_with_a_backpack.avif',
+      alt: 'A man with a backpack',
+      vertical: false
     },
-    "nice-red-shoe": {
-      src: 'demo/nice-red-shoe.jpg',
-      alt: 'A nice red shoe',
+    "buildings": {
+      src: 'demo/white_buildings.avif',
+      alt: 'Buildings',
       vertical: true
     }
   }
 
-  const currentImageKey = 'nice-red-shoe'
+  const currentImageKey = 'man_standing_with_a_backpack'
 
-//   const myImage = cld.image(demoImage[currentImageKey].src).resize(
-//   pad()
-//     .height(1600)
-//     .width(900)
-//     .background(generativeFill().prompt('A futuristic cityscape'))
-// ).toURL();
+  const targetImage = demoImage[currentImageKey]
+
+  const aspectRatio = {
+    width: targetImage.vertical ? 1080 : 1920,
+    height: targetImage.vertical ? 1920 : 1080,
+  }
 </script>
 
 <div class="container">
 	<h1>AI Generative Fill</h1>
 	<p>Fill images using Cloudinary AI</p>
 
-	<div class="images-column">
     <div class="image-container">
-      <div>
+      <div
+        class='image-wrapper loading-indicator'>
         <CldImage
-        width={1080}
-        height={1920}
+        
+        width={aspectRatio.width}
+        height={aspectRatio.height}
         alt={demoImage[currentImageKey].alt}
         src={demoImage[currentImageKey].src}
         fillBackground
         crop='pad'
+        class={targetImage.vertical ? 'vertical' : ''}
         />  
           <!-- <img class={demoImage[currentImageKey].vertical ? 'vertical' : ''} src={myImage} alt={demoImage[currentImageKey].alt} /> -->
       </div>
-    </div>
 	</div>
 </div>
