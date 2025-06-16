@@ -14,10 +14,18 @@
     "airspun-cream-with-flowers": {
       src: 'demo/airspun-cream-with-flowers.jpg',
       alt: 'Airspun cream with flowers'
-    }
+    },
+    "man_foggy_sky": {
+      src: 'demo/man_foggy_sky.jpg',
+      alt: 'Man in foggy sky'
+    },
+    "people_jumping": {
+      src: 'demo/people_jumping.jpg',
+      alt: 'People jumping'
+    },
   }
 
-  const currentImageKey = 'plant-in-a-vase'
+  const currentImageKey = 'people_jumping'
 </script>
 
 <div class="container">
@@ -44,8 +52,8 @@
 					width="800"
 					height="800"
 					alt={demoImage[currentImageKey].alt}
-          gravity="auto"
-          crop="auto"
+          crop="auto" 
+          gravity="faces"
 				/>
 			</div>
 		</div>
